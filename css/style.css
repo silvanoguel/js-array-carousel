@@ -65,8 +65,13 @@ img {
 
 .prev {
     top: 0;
+    color: black;
 }
 
 .next {
   bottom: 0;
+}
+
+.fa-solid.fa-chevron-up {
+  color: black;
 }
