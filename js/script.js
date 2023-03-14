@@ -1,21 +1,35 @@
 // Creare slide dinamicamente
-const imagesArr = [
-    'img/01.webp',
-    'img/02.webp',
-    'img/03.webp',
-    'img/04.webp',
-    'img/05.webp'
-];
+const imagesArray = ["img/01.jpg", "img/02.jpg", "img/03.jpg", "img/04.jpg", "img/05.jpg"];
 
-const itemsContainer = document.querySelector ("slider-items")
-
+const itemsContainer = document.querySelector("slider-items");
+console.log (itemsContainer)
 for (let i = 0; i < imagesArray.length; i++) {
-    const currentImage = imagesArray [i];
+    const currentImage = imagesArray[i];
 
     const sliderItem = `
-        <div class = "item">
+        <div class="item">
             <img src="${currentImage}" alt="">
         </div>`;
+        
+    itemsContainer.innerHTML += sliderItem;
+};
 
-        itemsContainer.innerHTML += sliderItem;
-}
+// Stato iniziale
+const itemsArray = document.getElementsByClassName ("item");
+console.log (itemsArray);
+
+// Imposto la prima slide visibile
+let activeItemIndex = 0;
+itemsArray[activeItemIndex].classList.add ("active");
+
+// Gestisco il click sul btn next
+const nextBtn = document.querySelector (".next");
+nextBtn.addEventListener("click", function() {
+    if (activeItemIndex < (itemsArray.length - 1)) {
+        itemsArray[activeItemIndex].classList.remove ("active");
+
+        activeItemIndex++;
+
+        itemsArray[activeItemIndex].classList.add ("active");
+    }
+});
